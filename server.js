@@ -7,6 +7,7 @@ const app = express();
 
 const { animals } = require("./data/animals.json")
 
+
 function filterByQuery(query, animalsArray) {
     let personalityTraitsArray = [];
     // Note that we save the animalsArray as filteredResults here:
@@ -51,6 +52,12 @@ function filterByQuery(query, animalsArray) {
     const result = animalsArray.filter(animal => animal.id === id)[0];
     return result;
   }
+
+  
+  app.get('/', (req, res) => {
+       let results = animals;
+       res.json(results);
+   });
 
 app.get('/api/animals', (req, res) => {
     let results = animals;
